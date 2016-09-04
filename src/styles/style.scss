@@ -1,0 +1,106 @@
+@import "mixins/index";
+
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+
+  @include dont-break-out;
+}
+
+.base-item {
+  display: flex;
+  align-items: baseline;
+  overflow: hidden;
+  border: 1px dashed brown;
+}
+
+.alrighty-strap, #root {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  //align-items: baseline;
+}
+
+.layer {
+  @extend .base-item;
+  flex: 0 1 100%;
+  flex-direction: column;
+}
+
+.content-col {
+  @extend .base-item;
+  flex-direction: column;
+
+  & > * {
+    overflow: hidden;
+
+    &.auto-width {
+      align-self: stretch;
+    }
+
+    &.auto-height {
+      flex-grow: 1;
+    }
+
+    &.auto {
+      @extend .auto-width;
+      @extend .auto-height;
+    }
+  }
+}
+
+.content-row {
+  @extend .base-item;
+  flex-direction: row;
+
+  & > * {
+    overflow: hidden;
+
+    &.auto-width {
+      flex-grow: 1;
+    }
+
+    &.auto-height {
+      align-self: stretch;
+    }
+
+    &.auto {
+      @extend .auto-width;
+      @extend .auto-height;
+    }
+  }
+}
+
+.testItem {
+  //background: darkgrey;
+  border: 2px solid burlywood;
+  height: 200px;
+}
+
+.test {
+  border: 1px solid red;
+}
+
+@for $i from 1 through 12 {
+  & .grid-#{$i} {
+    width: 100% * $i / 12;
+    flex-shrink: 0;
+    //overflow-y: hidden;
+  }
+}
+
+*,
+::after,
+::before {
+  box-sizing: border-box;
+}
+
+.wrap {
+  width: 100%;
+  height: 100%;
+}
