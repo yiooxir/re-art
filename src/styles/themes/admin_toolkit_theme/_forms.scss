@@ -1,0 +1,15 @@
+@import "constants";
+.art-form-control {
+  line-height: 1.8em;
+  color: $base-font-color;
+  border: 1px solid #e5e6e7;
+  border-radius: 1px;
+  margin: 5px 0 10px;
+
+  &:focus {
+    border-color: #1ab394;
+    //box-shadow: 0 1px 1px rgba(229, 103, 23, 0.075) inset, 0 0 8px rgba(229, 103, 23, 0.6);
+    outline: 0 none;
+    box-shadow: none;
+  }
+}

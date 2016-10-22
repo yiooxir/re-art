@@ -1,0 +1,28 @@
+@import "constants";
+
+html, body {
+  font-family: "open sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: $base-font-color;
+  font-size: $base-font-size;
+  font-weight: $base-font-weight;
+
+  & h1 {
+    font-size: 2em;
+  }
+
+  & h2 {
+    font-size: 1.7em;
+  }
+
+  & h3 {
+    font-size: 1.5em;
+  }
+
+  & small {
+    font-size: 75%
+  }
+
+  & label {
+    font-weight: $base-font-bold;
+  }
+}

@@ -1,4 +1,5 @@
-@import "mixins/index";
+@import "base/mixins/index";
+@import "base/index";
 
 html, body {
   width: 100%;
@@ -9,11 +10,12 @@ html, body {
   @include dont-break-out;
 }
 
+.cell,
 .base-item {
   display: flex;
   align-items: baseline;
-  overflow: hidden;
-  border: 1px dashed brown;
+  //overflow: hidden;
+  //border: 1px dashed #eaeaea;
 }
 
 .alrighty-strap, #root {
@@ -36,8 +38,16 @@ html, body {
   @extend .base-item;
   flex-direction: column;
 
+  &.vertical-align- {
+    @include align-content-y-col;
+  }
+
+  &.horizontal-align- {
+    @include align-content-x-col;
+  }
+
   & > * {
-    overflow: hidden;
+    //overflow: hidden;
 
     &.auto-width {
       align-self: stretch;
@@ -58,8 +68,15 @@ html, body {
   @extend .base-item;
   flex-direction: row;
 
+  &.vertical-align- {
+    @include align-content-y-row;
+  }
+
+  &.horizontal-align- {
+    @include align-content-x-row;
+  }
+
   & > * {
-    overflow: hidden;
 
     &.auto-width {
       flex-grow: 1;
@@ -80,10 +97,6 @@ html, body {
   //background: darkgrey;
   border: 2px solid burlywood;
   height: 200px;
-}
-
-.test {
-  border: 1px solid red;
 }
 
 @for $i from 1 through 12 {

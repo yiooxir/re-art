@@ -1,0 +1,26 @@
+@import "constants";
+
+.art-simple-panel {
+  padding: 10px;
+
+  & .art-content:first-child {
+    background: #ffffff;
+
+    & .art-header {
+      border-bottom: 1px solid;
+      border-top: 2px solid;
+      border-color: #e7eaec;
+      padding: 15px 20px;
+
+      & h3 {
+        font-size: 1.1em;
+        font-weight: $base-font-bold;
+      }
+    }
+
+    & > .art-content {
+      padding: 20px;
+    }
+  }
+
+}

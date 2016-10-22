@@ -10,7 +10,8 @@ module.exports = {
   entry: [
     'webpack-dev-server/client?http://localhost:3000',
     'webpack/hot/only-dev-server',
-    './src/App.js'
+    './src/App.js',
+    './src/styles/themes/admin_toolkit_theme/style.scss'
   ],
   output: {
     path: path.join(__dirname, 'dist'),
@@ -35,6 +36,12 @@ module.exports = {
       ]
     },
     ]
+  },
+  resolve: {
+    extensions: ['', '.js', '.jsx', '.json'],
+    alias: {
+      'components': path.join(__dirname, 'src/components'),
+    }
   },
   postcss: function () {
     return [precss, autoprefixer];

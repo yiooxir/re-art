@@ -1,0 +1,52 @@
+@import "../constants";
+
+@mixin button {
+  &.default {
+    border: $default-border-color;
+    background: $default-background-color;
+    color: $default-text-color;
+
+    &:hover {
+      border: $default-border-color-hover;
+      background: $default-background-color-hover;
+      color: $default-text-color-hover;
+    }
+
+    &:active {
+      border: $default-border-color-active;
+      background: $default-background-color-active;
+      color: $default-text-color-active;
+    }
+  }
+
+  &.primary {
+    border: $primary-border-color;
+    background: $primary-background-color;
+    color: $primary-text-color;
+  }
+
+  &.success {
+    border: $success-border-color;
+    background: $success-background-color;
+    color: $success-text-color;
+  }
+
+  &.info {
+    border: $info-border-color;
+    background: $info-background-color;
+    color: $info-text-color;
+  }
+
+  &.warning {
+    border: $warning-border-color;
+    background: $warning-background-color;
+    color: $warning-text-color;
+  }
+
+  &.danger {
+    border: $danger-border-color;
+    background: $danger-background-color;
+    color: $danger-text-color;
+  }
+
+}

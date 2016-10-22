@@ -1,17 +1,17 @@
 import React, { Component, PropTypes } from 'react'; // eslint-disable-line no-unused-vars
 import cx from 'classnames';
-import Row from '../Row';
+import Cell from '../Cell';
 // import { assetProps, splitProps } from '../../assets';
 
-const Header = props => {
+const Content = props => {
   // const assets = splitProps(props);
   const { className, children, ...rest } = props;
 
   return (
-    <Row className={cx('art-header', className)} {...rest}>
+    <Cell auto content-col className={cx('art-content', className)} {...rest}>
       {children}
-    </Row>
+    </Cell>
   );
 };
 
-export default Header;
+export default Content;
