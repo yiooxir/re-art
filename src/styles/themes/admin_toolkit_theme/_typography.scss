@@ -25,4 +25,8 @@ html, body {
   & label {
     font-weight: $base-font-bold;
   }
+
+  label {
+    font-weight: bold;
+  }
 }

@@ -8,7 +8,7 @@ var autoprefixer = require('autoprefixer');
 module.exports = {
   devtool: 'eval',
   entry: [
-    'webpack-dev-server/client?http://localhost:3000',
+    'webpack-dev-server/client?http://localhost:3001',
     'webpack/hot/only-dev-server',
     './src/App.js',
     './src/styles/themes/admin_toolkit_theme/style.scss'

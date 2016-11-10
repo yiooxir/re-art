@@ -7,7 +7,7 @@ const Cell = props => {
   const assets = splitProps(props);
   const { className, children, ...rest } = assets.rest;
   return (
-    <div className={cx('cell', assets.classes, className, styles.Box)} {...rest}>
+    <div className={cx('cell content-col', assets.classes, className, styles.Box)} {...rest}>
       {children}
     </div>
   );

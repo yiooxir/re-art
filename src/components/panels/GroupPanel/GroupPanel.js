@@ -1,15 +1,15 @@
 import React, { Component, PropTypes } from 'react'; // eslint-disable-line no-unused-vars
-import { Content, Cell } from '../../layout';
+import { Content, Cell, Row } from '../../layout';
 import cx from 'classnames';
 
-const Button = props => {
+const GroupPanel = props => {
   const { className, children, ...rest } = props;
 
   return (
-    <Cell className={cx('art-button content-row', className)} role="button" {...rest}>
+    <Cell {...rest} content-row className={cx('art-group-panel', className)} >
       {children}
     </Cell>
   );
 };
 
-export default Button;
+export default GroupPanel;

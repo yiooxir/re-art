@@ -1,0 +1,9 @@
+@import "constants";
+
+.art-label-field {
+  padding: 10px 0;
+
+  & label {
+    padding-bottom: 3px;
+  }
+}

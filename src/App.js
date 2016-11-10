@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom';
 import { Cell, Col, Row, Box, Header, Content } from './components/layout';
 import { Input } from './components/forms/basic_elements';
 import { Button } from 'components/buttons';
-import { SimplePanel } from 'components/panels';
+import { LabelField } from 'components/ui_elements';
+import { SimplePanel, GroupPanel } from 'components/panels';
 
 import './App.scss';
 import './styles/style.scss';
@@ -29,6 +30,20 @@ export default class App extends Component {
                   <Input/>
                   <label>Имя:</label>
                   <Input/>
+
+                  <Col grid={5}>
+                    <LabelField label="Описание:" text="Lorem ipsum dolor sit amet, consectetur adipisicing elit." />
+                    <LabelField label="Котрибьютер" text={<a href="/">asdfasdf</a>} />
+                    <LabelField label="Котрибьютер" text={<a href="/">asdfasdf</a>} />
+
+                    <LabelField>
+                      <label htmlFor="1">
+                        Терминал:
+                      </label>
+                      <span>Провайдер <a href="/">Альпари</a></span>
+                    </LabelField>
+                  </Col>
+
                   <Row align=":right">
                     <Button grid={4} type="primary" disabled>OK</Button>
                   </Row>
@@ -60,7 +75,11 @@ export default class App extends Component {
                   <h5>Заголовок 5 <small>подзаголовок</small></h5>
                   <p>текст</p> текст
                 </Content>
-                <Button type="primary">OK</Button>
+                <GroupPanel grid={5}>
+                  <Button type="primary">1</Button>
+                  <Button type="primary">OK</Button>
+                </GroupPanel>
+
               </SimplePanel>
             </Row>
 

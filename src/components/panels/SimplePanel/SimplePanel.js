@@ -8,7 +8,7 @@ const SimplePanel = props => {
 
   return (
     <Cell {...rest} className={cx('art-simple-panel', className)} >
-      <Content>
+      <Content auto >
         {children}
       </Content>
     </Cell>
