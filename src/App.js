@@ -1,9 +1,10 @@
+// require('font-awesome/css/font-awesome.css');
 import React, { Component, PropTypes } from 'react';
 import ReactDOM from 'react-dom';
 import { Cell, Col, Row, Box, Header, Content } from './components/layout';
-import { Input } from './components/forms/basic_elements';
+import { Input, Select } from './components/forms';
 import { Button } from 'components/buttons';
-import { LabelField } from 'components/ui_elements';
+import { LabelField, Ico } from 'components/ui_elements';
 import { SimplePanel, GroupPanel } from 'components/panels';
 
 import './App.scss';
@@ -28,6 +29,15 @@ export default class App extends Component {
                   <Input/>
                   <label>Имя:</label>
                   <Input/>
+                  <label>Селект:</label>
+                  <Select
+                    value="first"
+                    search
+                    options={[
+                      {value: 'select1'}, {value: 'select2'}
+                    ]}
+                  />
+
                   <label>Имя:</label>
                   <Input/>
 
@@ -35,6 +45,8 @@ export default class App extends Component {
                     <LabelField label="Описание:" text="Lorem ipsum dolor sit amet, consectetur adipisicing elit." />
                     <LabelField label="Котрибьютер" text={<a href="/">asdfasdf</a>} />
                     <LabelField label="Котрибьютер" text={<a href="/">asdfasdf</a>} />
+                    123
+                    <Ico name="bath" size="2x"/>
 
                     <LabelField>
                       <label htmlFor="1">

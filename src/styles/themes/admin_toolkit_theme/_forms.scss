@@ -12,4 +12,38 @@
     outline: 0 none;
     box-shadow: none;
   }
+
+
+
+}
+
+.art-select {
+  width: 100%;
+
+  & .art-select-dropdown-wrap {
+    top: -10px;
+  }
+
+  & .art-select-dropdown {
+    border: {
+      left: 1px solid #1ab394;
+      right: 1px solid #1ab394;
+      bottom: 1px solid #1ab394;
+    }
+    border-radius: 0 0 2px 2px;
+    padding-bottom: 15px;
+  }
+
+  & .art-content {
+    font-size: 1.1em;
+    padding: 5px;
+
+    & > * {
+      cursor: pointer;
+
+      &:hover {
+        background: gainsboro;
+      }
+    }
+  }
 }

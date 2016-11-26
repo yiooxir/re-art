@@ -2,3 +2,30 @@
   width: 100%;
   font-size: 1.1em;
 }
+
+.art-select {
+  width: 100%;
+
+  & .art-select-dropdown-wrap {
+    position: relative;
+    height: 0;
+  }
+
+  & .art-select-dropdown {
+    position: absolute;
+    width: 100%;
+    max-height: 150px;
+    background: white;
+  }
+
+  & .art-content {
+
+    & > * {
+      cursor: pointer;
+
+      &:hover {
+        background: gainsboro;
+      }
+    }
+  }
+}

@@ -7,10 +7,12 @@
     background: #ffffff;
 
     & .art-header {
+      padding: 0 20px;
+      min-height: 40px;
+      align-items: center;
       border-bottom: 1px solid;
       border-top: 2px solid;
       border-color: #e7eaec;
-      padding: 15px 20px;
 
       & h3 {
         font-size: 1.1em;

@@ -1,15 +1,15 @@
 import React, { Component, PropTypes } from 'react'; // eslint-disable-line no-unused-vars
 import cx from 'classnames';
-import { Row, Col } from 'components/layout';
+import { Row, Col } from '../../layout';
 
 const LabelField = props => {
-  const { className, children, label, text, ...rest } = props;
+  const { className, children, ...rest } = props;
 
-  const customRender = ({label, text}) => {
+  const customRender = ({label, value}) => {
     return (
       <Col>
         <label>{label}</label>
-        <p>{text}</p>
+        <p>{value}</p>
       </Col>
     )
   };
