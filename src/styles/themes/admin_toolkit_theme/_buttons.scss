@@ -6,3 +6,10 @@
   border-radius: $base-round;
   //@include button;
 }
+
+&.art-icon-button {
+  padding: 5px;
+  border: 1px solid #e5e6e7;
+  border-radius: 2px;
+}
+

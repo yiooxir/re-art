@@ -5,13 +5,20 @@ import onClickOutSideListener from 'react-onclickoutside';
 import { filter, isArray, isString, isFunction } from 'lodash';
 import cx from 'classnames';
 
+/* todo: Input should get the focus after option's been selected
+* todo: Add arrow management
+* todo: Add clear icon & icon of drop down
+* todo: fix css: green border disappears if we click on the dropdown window
+* todo: Add notice 'Not found' if selection list is empty
+* */
+
 @onClickOutSideListener
 export default class Select extends Component {
 
   static propTypes = {
-    value: PropTypes.string.isRequired,
+    value: PropTypes.string,
     options: PropTypes.array.isRequired,
-    search: PropTypes.oneOfType([
+    searchable: PropTypes.oneOfType([
       PropTypes.string,
       PropTypes.array,
       PropTypes.func,
@@ -23,16 +30,18 @@ export default class Select extends Component {
   };
 
   static defaultProps = {
+    onSelect: () => {}
   };
 
   state = {
     DDVisible: false,
-    value: this.props.value,
-    options: []
+    value: this.props.value || '',
+    options: this.props.options || []
   };
 
   componentWillMount() {
     this.mounted = true;
+    this.valueHasBeenChanged = false;
   }
 
   componentWillUnmount() {
@@ -40,9 +49,12 @@ export default class Select extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.value !== this.state.value) {
-      this.setState({value: nextProps.value})
-    }
+    const { value } = this.state;
+
+    this.setState({
+      options: nextProps.options,
+      value: this.valueHasBeenChanged ? value : nextProps.value
+    });
   }
 
   setState(params) {
@@ -57,77 +69,75 @@ export default class Select extends Component {
     this.setDDVisibility(false);
   }
 
-  queryValues(value) {
-    const { search, options: opt } = this.props;
+  selectOptions(value) {
+    const { searchable, options: opt } = this.props;
 
-    if (!search) return opt;
+    if (!searchable || !value) return opt;
     let options;
 
+    if (!isArray(opt)) {
+      console.warn('Select Error: Options should be an Array type');
+    }
+
     switch (true) {
-    case search === true:
+    case searchable === true:
       options = filter(opt, e => e.value.toLowerCase().includes(value));
       break;
 
       // todo add search by bunch of object fields
-    // case isArray(search):
-    //   const q = search.reduce((obj, e) => {obj[e] = value}, {});
+    // case isArray(searchable):
+    //   const q = searchable.reduce((obj, e) => {obj[e] = value}, {});
     //   options = filter(opt, q);
     //   break;
 
-    case isString(search):
-      options = filter(opt, e => e[search].toLowerCase().includes(value));
+    case isString(searchable):
+      options = filter(opt, e => e[searchable].toLowerCase().includes(value));
       break;
 
-    case isFunction(search):
-      options = search(value, opt);
+    case isFunction(searchable):
+      options = searchable(value, opt);
+      if (!isArray(options)) {
+        console.warn('Select Error: Search function should return an Array');
+        options = [];
+      }
       break;
 
     default:
       options = opt;
     }
 
-    console.log('q options',options);
     return options;
   }
 
-  getOptions = () => {
-    const { search, options } = this.props;
-
-    /*
-    * If there is a search as the parameter it will be keeps and selected from inner state
-    * */
-    return search ? this.state.options : options;
-  };
-
   onInputChange = (value) => {
-    const options = this.queryValues(value);
-    this.setState({value, options})
+    this.setState({ value });
+    this.valueHasBeenChanged = true;
   };
 
   onOptionSelect = (option, event) => {
     const { onSelect } = this.props;
 
-    if (onSelect) {
-      onSelect(option, event);
-    } else {
-      this.setState({value: option.value})
-    }
-
+    this.onInputChange(option.value);
+    // onSelect(option, event);
+    // this.setState({value: option.value, valueHasBeenChanged: true});
+    // console.log('onOptionSelect: option.value', option.value);
+    setTimeout(() => onSelect(option, event), 0);
     this.setDDVisibility(false);
   };
 
   render() {
-    const { className, options } = this.props;
+    const { className, options, value: _value, searchable, enableOnClickOutside, disableOnClickOutside, ...rest } = this.props;
     const { DDVisible, value } = this.state;
+
     return (
-      <Col className={cx(className, "art-select")} >
+      <Col className={cx(className, "art-select")} {...rest} >
         <Row className="art-select-input" onClick={() => this.setDDVisibility(true)} >
           <Input value={value || ''} onChange={e => this.onInputChange(e.target.value)} />
         </Row>
         <Row className="art-select-dropdown-wrap" display={DDVisible}>
           <Row className="art-select-dropdown scrollable">
             <Content className="scrollable">
-              {this.getOptions().map((option, i) => (
+              {this.selectOptions(value).map((option, i) => (
                 <Row key={i} onClick={(e) => this.onOptionSelect(option, e)}>{option.value || '-'}</Row>
               ))}
             </Content>

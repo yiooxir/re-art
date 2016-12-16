@@ -7,7 +7,7 @@
     background: #ffffff;
 
     & .art-header {
-      padding: 0 20px;
+      padding: 0 10px;
       min-height: 40px;
       align-items: center;
       border-bottom: 1px solid;
@@ -24,5 +24,23 @@
       padding: 20px;
     }
   }
+}
 
+.art-dashboard {
+  background: #2F4050;
+  & > a {
+    text-decoration: none;
+  }
+
+  & .art-menu-item {
+    color: #a7b1c2;
+    padding: 15px 15px;
+    font-size: 1.1em;
+    cursor: pointer;
+
+    &:hover {
+      background: #293846;
+      color: #ffffff;
+    }
+  }
 }

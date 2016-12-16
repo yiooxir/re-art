@@ -40,3 +40,13 @@
   pointer-events: none;
   user-select: none;
 }
+
+&.art-icon-button {
+  padding: 5px;
+  border: 1px solid;
+  cursor: pointer;
+
+  &:hover {
+    background: gainsboro;
+  }
+}

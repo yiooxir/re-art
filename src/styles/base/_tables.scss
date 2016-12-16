@@ -1,0 +1,34 @@
+table {
+  width: 100%;
+
+  & > thead {
+    font-weight: bold;
+    text-align: left;
+    padding: 0.5em 1em;
+  }
+
+  th, td {
+    padding: 5px 3px;
+  }
+
+  & tbody tr.selected {
+    background: gainsboro;
+  }
+
+  &.basic {
+    & > thead {
+      border-bottom: 1px solid gray;
+    }
+
+    & tbody tr {
+      border-top: 1px solid gray;
+    }
+  }
+
+  &.hover {
+    tbody tr:hover {
+      background: gainsboro;
+      cursor: pointer;
+    }
+  }
+}

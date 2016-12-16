@@ -3,9 +3,9 @@ import React, { Component, PropTypes } from 'react';
 import ReactDOM from 'react-dom';
 import { Cell, Col, Row, Box, Header, Content } from './components/layout';
 import { Input, Select } from './components/forms';
-import { Button } from 'components/buttons';
+import { Button, IconButton } from 'components/buttons';
 import { LabelField, Ico } from 'components/ui_elements';
-import { SimplePanel, GroupPanel } from 'components/panels';
+import { SimplePanel, GroupPanel, PaddingPanel } from 'components/panels';
 
 import './App.scss';
 import './styles/style.scss';
@@ -14,7 +14,10 @@ export default class App extends Component {
   render() {
     return (
       <div className="layer content-col">
-        <Header>hello</Header>
+        <Header>
+          <h3>hello</h3>
+
+        </Header>
         <Box>
           <Col grid={2}>
             sidebar
@@ -22,14 +25,24 @@ export default class App extends Component {
           <Col grid={10} style={{background: '#f3f3f4'}}>
             <Row>
               <SimplePanel grid={4}>
-                <Header><h3>Количество сделок</h3></Header>
+                <Header align=":between">
+                  <h3>Количество сделок</h3>
+                  <PaddingPanel>
+                    <IconButton name="plus" />
+                    <IconButton name="pencil" />
+                  </PaddingPanel>
+
+                </Header>
                 <Content>
                   <h3>Управление сделками: <small>итог здесь</small></h3>
                   <label>Имя:</label>
                   <Input/>
+
+                  <IconButton name="check" size="2x" />
                   <label>Имя:</label>
                   <Input/>
                   <label>Селект:</label>
+
                   <Select
                     value="first"
                     search

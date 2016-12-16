@@ -13,4 +13,18 @@ const Ico = props => {
   return <Awesome {...props} />;
 };
 
+Ico.propTypes = {
+  name: PropTypes.string.isRequired,
+  ariaLabel: PropTypes.string,
+  fixedWidth: PropTypes.bool,
+  flip: PropTypes.bool,
+  inverse: PropTypes.bool,
+  pulse: PropTypes.bool,
+  rotate: PropTypes.number,
+  size: PropTypes.string,
+  spin: PropTypes.bool,
+  stack: PropTypes.string,
+  tag: PropTypes.string,
+};
+
 export default Ico;
